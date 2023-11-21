@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@SuppressWarnings("unused")
 public class Graph {
     private final int[][] initMatrix;
     private boolean isValid = true;
@@ -27,7 +28,8 @@ public class Graph {
         for (int i = 0; i < initMatrix.length; i++) {
             for (int j = 0; j < i; j++) {
                 if (initMatrix[i][j] != 0) {
-                    edge = new Edge(vertices.get(i), vertices.get(j));
+                    edge = new Edge(vertices.get(i), vertices.get(j), initMatrix[i][j]);
+                    edges.add(edge);
                     vertices.get(i).addEdge(edge);
                     vertices.get(j).addEdge(edge);
                 }
@@ -49,8 +51,35 @@ public class Graph {
         }
     }
 
+    public int[][] retrieveModifiedWeightMatrix() {
+        int[][] matrix = new int[vertices.size()][vertices.size()];
+        for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (initMatrix[i][j] != 0) {
+                    matrix[i][j] = (vertices.get(i).getEdgeByAdjacentVertex(vertices.get(j)).doesBelongToTree()
+                            ? initMatrix[i][j]
+                            : 0);
+                    matrix[j][i] = matrix[i][j];
+                }
+            }
+        }
+        return matrix;
+    }
+
+    public List<Vertex> getVertices() {
+        return vertices;
+    }
+
 
     public boolean isValid() {
         return isValid;
+    }
+
+    public List<Edge> getEdges() {
+        return edges;
+    }
+
+    public int[][] getInitMatrix() {
+        return initMatrix;
     }
 }

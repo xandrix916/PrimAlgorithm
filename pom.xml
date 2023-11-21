@@ -9,7 +9,7 @@
     <version>${revision}</version>
     <packaging>jar</packaging>
 
-    <name>Java Course submissions</name>
+    <name>Graphs and Algorithms</name>
     <inceptionYear>2023</inceptionYear>
 
     <licenses>

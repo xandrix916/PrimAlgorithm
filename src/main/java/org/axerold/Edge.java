@@ -1,30 +1,40 @@
 package org.axerold;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Edge {
     private final Vertex first;
     private final Vertex second;
 
-    private boolean isActive;
+    private final int weight;
 
-    public Edge(Vertex first, Vertex second) {
+    private boolean belongsToTree;
+
+    public Edge(Vertex first, Vertex second, int weight) {
         this.first = first;
         this.second = second;
-        this.isActive = true;
+        this.belongsToTree = false;
+        this.weight = weight;
     }
 
-    public Vertex getFirst() {
-        return first;
+    public Vertex getAnotherVertex(Vertex vertex) {
+        if (first != vertex && second != vertex) {
+            return null;
+        }
+
+        return (first == vertex ? second : first);
     }
 
-    public Vertex getSecond() {
-        return second;
+    public void setBelongsToTree(boolean belongsToTree) {
+        this.belongsToTree = belongsToTree;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public boolean doesBelongToTree() {
+        return belongsToTree;
     }
 }

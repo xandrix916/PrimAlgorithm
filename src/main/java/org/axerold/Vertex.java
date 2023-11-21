@@ -1,8 +1,12 @@
 package org.axerold;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
+@SuppressWarnings("unused")
 public class Vertex {
 
     private static final int INFINITY = Integer.MAX_VALUE;
@@ -26,6 +30,16 @@ public class Vertex {
 
     public List<Edge> getAdjacentEdges() {
         return adjacentEdges;
+    }
+
+    public Edge getEdgeByAdjacentVertex(Vertex vertex) {
+        for (var e: adjacentEdges) {
+            if (e.getAnotherVertex(vertex) == this) {
+                return e;
+            }
+        }
+        log.warn("No such edge found");
+        return null;
     }
 
     public int getNumber() {
