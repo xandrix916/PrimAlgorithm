@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0714ba13-c7eb-44e7-841a-723a6848352c" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/axerold/CustomPriorityQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/axerold/MainTest.java" afterDir="false" />
+    <list default="true" id="0714ba13-c7eb-44e7-841a-723a6848352c" name="Changes" comment="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/axerold/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/axerold/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/input1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/input2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Prim.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Prim.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/axerold/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/axerold/MainTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -52,16 +56,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "nodejs_package_manager_path": "npm"
+    "last_opened_file_path": "D:/Projects/Java/PrimAlgorithm/src/test",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.33448276",
+    "settings.editor.selected.configurable": "build.tools"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\Java\PrimAlgorithm\src\test" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -74,7 +90,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MainTest.wikiExample">
+  <component name="RunManager" selected="JUnit.MainTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.axerold.Main" />
       <module name="PrimAlgorithm" />
@@ -88,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.wikiExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PrimAlgorithm" />
       <extension name="coverage">
         <pattern>
@@ -98,7 +114,54 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.axerold" />
       <option name="MAIN_CLASS_NAME" value="org.axerold.MainTest" />
-      <option name="METHOD_NAME" value="wikiExample" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.apparentExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PrimAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.axerold.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.axerold" />
+      <option name="MAIN_CLASS_NAME" value="org.axerold.MainTest" />
+      <option name="METHOD_NAME" value="apparentExample" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.forestExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PrimAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.axerold.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.axerold" />
+      <option name="MAIN_CLASS_NAME" value="org.axerold.MainTest" />
+      <option name="METHOD_NAME" value="forestExample" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.internetExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PrimAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.axerold.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.axerold" />
+      <option name="MAIN_CLASS_NAME" value="org.axerold.MainTest" />
+      <option name="METHOD_NAME" value="internetExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,8 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainTest.wikiExample" />
+        <item itemvalue="JUnit.MainTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainTest.forestExample" />
+        <item itemvalue="JUnit.MainTest.internetExample" />
+        <item itemvalue="JUnit.MainTest.apparentExample" />
       </list>
     </recent_temporary>
   </component>
@@ -121,7 +187,10 @@
       <updated>1700555274674</updated>
       <workItem from="1700555275824" duration="349000" />
       <workItem from="1700555687242" duration="5416000" />
-      <workItem from="1700573896358" duration="4984000" />
+      <workItem from="1700573896358" duration="8318000" />
+      <workItem from="1700664373187" duration="3733000" />
+      <workItem from="1700840799515" duration="5738000" />
+      <workItem from="1700914240326" duration="2293000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700558211452</created>
@@ -130,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700558211452</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест">
+      <created>1700579130142</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700579130142</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,15 +225,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/axerold/MainTest.java</url>
-          <line>25</line>
+          <line>12</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/axerold/Main.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -166,5 +248,9 @@
         <watch expression="priorityQueue" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

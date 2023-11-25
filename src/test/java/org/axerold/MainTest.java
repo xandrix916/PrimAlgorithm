@@ -2,23 +2,10 @@ package org.axerold;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MainTest {
-    List<List<Integer>> wrapToArrayList(int[][] matrix) {
-        List<List<Integer>> wrappedMatrix = new ArrayList<>();
-        for (var row: matrix) {
-            List<Integer> wrappedRow = new ArrayList<>();
-            Arrays.stream(row).forEach(wrappedRow::add);
-            wrappedMatrix.add(wrappedRow);
-        }
-        return wrappedMatrix;
-    }
-
 
     @Test
     void wikiExample() {
@@ -35,7 +22,6 @@ class MainTest {
 
         // act
         int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 3);
-        var wrappedModifiedMatrix = wrapToArrayList(modifiedMatrix);
 
         // assert
         int[][] expected = {{0, 7, 0, 5, 0, 0, 0},
@@ -46,7 +32,181 @@ class MainTest {
                 {0, 0, 0, 6, 0, 0, 0},
                 {0, 0, 0, 0, 9, 0, 0}
         };
-        var wrappedExpected = wrapToArrayList(expected);
-        assertEquals(wrappedExpected, wrappedModifiedMatrix);
+        assertArrayEquals(modifiedMatrix, expected);
+    }
+
+    @Test
+    void apparentExample() {
+        // arrange
+        int[][] initMatrix = {{0, 2, 0, 10, 7, 0},
+                {2, 0, 5, 0, 6, 7},
+                {0, 5, 0, 0, 0, 9},
+                {10, 0, 0, 0, 8, 0},
+                {7, 6, 0, 8, 0, 2},
+                {0, 7, 9, 0, 2, 0},
+        };
+
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, -1);
+
+        // assert
+        int[][] expected = {{0, 2, 0, 0, 0, 0},
+                {2, 0, 5, 0, 6, 0},
+                {0, 5, 0, 0, 0, 0},
+                {0, 0, 0, 0, 8, 0},
+                {0, 6, 0, 8, 0, 2},
+                {0, 0, 0, 0, 2, 0},
+        };
+        assertArrayEquals(expected, modifiedMatrix);
+    }
+
+    @Test
+    void habrExample() {
+        // arrange
+        int[][] initMatrix = {{0, 7, 8, 0, 0, 0},
+                {7, 0, 11, 2, 0, 0},
+                {8, 11, 0, 6, 9, 0},
+                {0, 2, 6, 0, 11, 9},
+                {0, 0, 9, 11, 0, 10},
+                {0, 0, 0, 9, 10, 0},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, -1);
+
+        // assert
+        int[][] expected = {{0, 7, 0, 0, 0, 0},
+                {7, 0, 0, 2, 0, 0},
+                {0, 0, 0, 6, 9, 0},
+                {0, 2, 6, 0, 0, 9},
+                {0, 0, 9, 0, 0, 0},
+                {0, 0, 0, 9, 0, 0},
+        };
+        assertArrayEquals(expected, modifiedMatrix);
+    }
+
+    @Test
+    void internetExample() {
+        // arrange
+        int[][] initMatrix = {{0, 4, 4, 0, 0, 0},
+                {4, 0, 2, 0, 0, 0},
+                {4, 2, 0, 3, 2, 4},
+                {0, 0, 3, 0, 0, 3},
+                {0, 0, 2, 0, 0, 3},
+                {0, 0, 4, 3, 3, 0},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 2);
+
+        // assert
+        int[][] expected = {{0, 0, 4, 0, 0, 0},
+                {0, 0, 2, 0, 0, 0},
+                {4, 2, 0, 3, 2, 0},
+                {0, 0, 3, 0, 0, 0},
+                {0, 0, 2, 0, 0, 3},
+                {0, 0, 0, 0, 3, 0},
+        };
+        assertArrayEquals(expected, modifiedMatrix);
+    }
+
+    @Test
+    void forestExample() {
+        // arrange
+        int[][] initMatrix = {{0, 2, 0, 7, 0, 0, 0},
+                {2, 0, 4, 5, 0, 0, 0},
+                {0, 4, 0, 9, 0, 0, 0},
+                {7, 5, 9, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 5},
+                {0, 0, 0, 0, 1, 0, 6},
+                {0, 0, 0, 0, 5, 6, 0}
+        };
+
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 3);
+
+        // assert
+        int[][] expected = {{0, 2, 0, 0, 0, 0, 0},
+                {2, 0, 4, 5, 0, 0, 0},
+                {0, 4, 0, 0, 0, 0, 0},
+                {0, 5, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 5},
+                {0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 5, 0, 0}
+        };
+        assertArrayEquals(expected, modifiedMatrix);
+    }
+
+    @Test
+    void failExampleWrongRowAmount() {
+        // arrange
+        int[][] initMatrix = {{0, 4, 4, 0, 0, 0},
+                {4, 0, 2, 0, 0, 0},
+                {4, 2, 0, 3, 2, 4},
+                {0, 0, 3, 0, 0, 3},
+                {0, 0, 2, 0, 0, 3},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 2);
+
+        // assert
+        assertNull(modifiedMatrix);
+    }
+
+    @Test
+    void failExampleWrongColAmount() {
+        // arrange
+        int[][] initMatrix = {{0, 4, 4, 0, 0},
+                {4, 0, 2, 0, 0},
+                {4, 2, 0, 3, 2},
+                {0, 0, 3, 0, 0},
+                {0, 0, 2, 0, 0},
+                {0, 0, 4, 3, 3},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 2);
+
+        // assert
+        assertNull(modifiedMatrix);
+    }
+
+    @Test
+    void failExampleOrientedGraph() {
+        // arrange
+        int[][] initMatrix = {{0, 4, 4, 0, 0, 0},
+                {0, 0, 2, 0, 0, 0},
+                {4, 2, 0, 3, 2, 4},
+                {0, 0, 3, 0, 0, 3},
+                {0, 0, 2, 0, 0, 3},
+                {0, 0, 0, 3, 0, 0},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 2);
+
+        // assert
+        assertNull(modifiedMatrix);
+    }
+
+    @Test
+    void failExampleGraphContainsLoops() {
+        // arrange
+        int[][] initMatrix = {{1, 4, 4, 0, 0, 0},
+                {4, 0, 2, 0, 0, 0},
+                {4, 2, 5, 3, 2, 4},
+                {0, 0, 3, 0, 0, 3},
+                {0, 0, 2, 0, 0, 3},
+                {0, 0, 4, 3, 3, 9},
+        };
+
+        // act
+        int[][] modifiedMatrix = Main.modifyWeightMatrix(initMatrix, 2);
+
+        // assert
+        assertNull(modifiedMatrix);
     }
 }

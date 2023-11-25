@@ -2,8 +2,7 @@ package org.axerold;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @SuppressWarnings("unused")
@@ -18,6 +17,8 @@ public class Vertex {
 
     private final List<Edge> adjacentEdges = new ArrayList<>();
 
+    private final Map<Vertex, Edge> vertexEdgeMap = new HashMap<>();
+
     public Vertex(int number) {
         this.number = number;
         this.distance = INFINITY;
@@ -26,6 +27,7 @@ public class Vertex {
 
     public void addEdge(Edge edge) {
         adjacentEdges.add(edge);
+        vertexEdgeMap.put(edge.getAnotherVertex(this), edge);
     }
 
     public List<Edge> getAdjacentEdges() {
@@ -33,13 +35,11 @@ public class Vertex {
     }
 
     public Edge getEdgeByAdjacentVertex(Vertex vertex) {
-        for (var e: adjacentEdges) {
-            if (e.getAnotherVertex(vertex) == this) {
-                return e;
-            }
-        }
-        log.warn("No such edge found");
-        return null;
+        return vertexEdgeMap.get(vertex);
+    }
+
+    public Set<Vertex> getAdjacentVertices() {
+        return vertexEdgeMap.keySet();
     }
 
     public int getNumber() {

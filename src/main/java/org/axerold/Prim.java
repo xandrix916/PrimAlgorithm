@@ -1,8 +1,10 @@
 package org.axerold;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 
-
+@Slf4j
 public class Prim {
     private final Graph graph;
 
@@ -38,7 +40,11 @@ public class Prim {
             priorityQueue.updateOrder();
 
             vertex = priorityQueue.remove();
-            minimumSpanningTreeEdges.add(vertex.getAncestor().getEdgeByAdjacentVertex(vertex));
+            try {
+                minimumSpanningTreeEdges.add(vertex.getAncestor().getEdgeByAdjacentVertex(vertex));
+            } catch (NullPointerException e) {
+                log.warn("Forest case, no edges appending in mst");
+            }
         }
         makeResultTree();
     }
@@ -48,7 +54,4 @@ public class Prim {
             e.setBelongsToTree(true);
         }
     }
-
-
-
 }
