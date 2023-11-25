@@ -1,27 +1,46 @@
 package org.axerold;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import lombok.extern.slf4j.Slf4j; // библиотека используется для логгирования ошибок,
+// предупреждений и взаимодействия с пользователем
 
 @Slf4j
-public class Main {
+public final class Main {
+    private Main() {}
+
+    /**
+     * Функция используется в тестах JUnit5. В них проверяется корректность полученной
+     * матрицы при определённых входных данных.
+     * @param initMatrix стартовая матрица весов
+     * @param startVertex стартовая вершина
+     * @return матрицу весов для MST
+     */
     public static int[][] modifyWeightMatrix(int[][] initMatrix, int startVertex) {
         Graph graph = new Graph(initMatrix);
         Prim primAlgo = new Prim(graph);
-        if (startVertex < 0 || startVertex > initMatrix.length) {
-            primAlgo.run();
-        } else {
-            primAlgo.run(startVertex);
+        try {
+            if (startVertex < 0 || startVertex > initMatrix.length) {
+                primAlgo.run(); // для выбора случайной вершины можно ввести любое некорректное значение, например, -1
+            } else {
+                primAlgo.run(startVertex);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         }
         return graph.retrieveModifiedWeightMatrix();
     }
 
+    /**
+     * Данная функция используется для файлового ввода/вывода.
+     * @param graph граф построенный по исходной матрице весов
+     * @param startVertex стартовая вершина
+     * @return граф с рёбрами, помеченными, как входящие в MST
+     */
     public static Graph modifyGraph(Graph graph, int startVertex) {
         Prim primAlgo = new Prim(graph);
         if (startVertex < 0 || startVertex > graph.getVertices().size()) {
@@ -31,6 +50,13 @@ public class Main {
         }
         return graph;
     }
+
+    /**
+     * Обрабатывает строку, полученную при считывании информации из файла input.txt
+     * @param rawText - "сырой" текст, полученный при считывании из файла
+     * @return граф, полученный с помощью
+     * @see Main#modifyGraph(Graph, int)
+     */
 
     private static Graph parseString(String rawText) {
         String[] strings = rawText.split("\r\n");
@@ -57,6 +83,21 @@ public class Main {
         }
     }
 
+    /**
+     * Осуществляет считывание графа из файла input.txt <br>
+     * Корректный формат файла: <br>
+     * n v <br>
+     * E11 ... E1n <br>
+     * ::: ......... ::: <br>
+     * ::: ......... ::: <br>
+     * ::: ......... ::: <br>
+     * En1 ... Enn <br>
+     * где n - количество вершин, v - стартовая вершина, коэффициенты Eij - коэф-ты матрицы весов.
+     * @throws IOException в случае проблем с вводом, например, файла не существует.
+     * @return граф, полученный с помощью parseString()
+     * @see Main#parseString(String)
+     */
+
     private static Graph inputGraph() throws IOException {
         Path path = Path.of("src/main/java/org/axerold/input.txt");
         StringBuilder mapBuilder = new StringBuilder();
@@ -74,6 +115,13 @@ public class Main {
         }
         return parseString(mapBuilder.toString());
     }
+
+    /**
+     * Осуществляет вывод графа в output.txt
+     * @param graph граф, полученный из inputGraph()
+     * @throws IOException в случае проблем с выводом
+     * @see Main#inputGraph()
+     */
     private static void outputGraph(Graph graph) throws IOException {
         graph.retrieveModifiedWeightMatrix();
         Path path = Path.of("src/main/java/org/axerold/output.txt");

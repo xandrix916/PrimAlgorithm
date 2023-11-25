@@ -1,9 +1,16 @@
 package org.axerold;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
+/**
+ * Обёртка для списка, имитирующая PriorityQueue.
+ * Поскольку в JDK по умолчанию нет реализации очереди, которая
+ * может обновлять порядок в очереди при изменении элементов, то я решил сделать это сам.
+ */
 public class CustomPriorityQueue {
-    private final List<Vertex> queue;
+    private final List<Vertex> queue; // здесь будут храниться все вершины
 
     public CustomPriorityQueue() {
         queue = new ArrayList<>();

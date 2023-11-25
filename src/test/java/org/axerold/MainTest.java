@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Данный класс осуществляет тестирование с помощью модуля JUnit5. <br>
+ * Тесты построены по структуре AAA - arrange, act, assert <br>
+ * arrange - задаёт массив для дальнейшей обработки <br>
+ * act - вызов функции modifyWeightMatrix из класса Main <br>
+ * assert - проверка полученной матрицы весов <br>
+ * Для своего теста достаточно скопировать первый тест и поменять значения в массивах
+ */
 class MainTest {
 
     @Test

@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0714ba13-c7eb-44e7-841a-723a6848352c" name="Changes" comment="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/axerold/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/axerold/output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/input1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/input2.txt" afterDir="false" />
+    <list default="true" id="0714ba13-c7eb-44e7-841a-723a6848352c" name="Changes" comment="v 0.2&#10;Доработан алгоритм&#10;Включены в рассмотрение ситуации, когда на вход подаётся не подходящий граф (ориентированный, содержащий петли)&#10;Обрабатывается ситуация, когда на вход подаётся несвязный граф.&#10;Добавлены ещё тесты">
+      <change afterPath="$PROJECT_DIR$/checkstyle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/CustomPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/CustomPriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/axerold/Prim.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/axerold/Prim.java" afterDir="false" />
@@ -46,7 +43,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2YTh2dyIAxCSts5leOlh2wDwvzK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -66,7 +63,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/Projects/Java/PrimAlgorithm/src/test",
+    "last_opened_file_path": "D:/Projects/Java/PrimAlgorithm",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -76,6 +73,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\Java\PrimAlgorithm" />
       <recent name="D:\Projects\Java\PrimAlgorithm\src\test" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -88,6 +86,7 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn compile" />
+      <command value="mvn checkstyle:check" />
     </option>
   </component>
   <component name="RunManager" selected="JUnit.MainTest">
@@ -190,7 +189,7 @@
       <workItem from="1700573896358" duration="8318000" />
       <workItem from="1700664373187" duration="3733000" />
       <workItem from="1700840799515" duration="5738000" />
-      <workItem from="1700914240326" duration="2293000" />
+      <workItem from="1700914240326" duration="10326000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700558211452</created>
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700579130142</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v 0.2&#10;Доработан алгоритм&#10;Включены в рассмотрение ситуации, когда на вход подаётся не подходящий граф (ориентированный, содержащий петли)&#10;Обрабатывается ситуация, когда на вход подаётся несвязный граф.&#10;Добавлены ещё тесты">
+      <created>1700916652927</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700916652927</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,19 +232,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 0.1&#10;Сделан +- рабочий алгоритм, добавлен один тест" />
+    <MESSAGE value="v 0.2&#10;Доработан алгоритм&#10;Включены в рассмотрение ситуации, когда на вход подаётся не подходящий граф (ориентированный, содержащий петли)&#10;Обрабатывается ситуация, когда на вход подаётся несвязный граф.&#10;Добавлены ещё тесты" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 0.2&#10;Доработан алгоритм&#10;Включены в рассмотрение ситуации, когда на вход подаётся не подходящий граф (ориентированный, содержащий петли)&#10;Обрабатывается ситуация, когда на вход подаётся несвязный граф.&#10;Добавлены ещё тесты" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/axerold/MainTest.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/axerold/Main.java</url>
-          <line>94</line>
+          <line>142</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

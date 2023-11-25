@@ -1,29 +1,48 @@
 package org.axerold;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import lombok.extern.slf4j.Slf4j; // библиотека используется для логгирования ошибок,
+// предупреждений и взаимодействия с пользователем
 
-import java.util.*;
-
+/**
+ * Реализация вершины графа. Помимо номера, содержит ссылки на смежные рёбра и вершины,
+ * расстояние до минимального остовного дерева и предка.
+ */
 @Slf4j
 @SuppressWarnings("unused")
 public class Vertex {
 
-    private static final int INFINITY = Integer.MAX_VALUE;
+    private static final int INFINITY = Integer.MAX_VALUE; // константа, выступающая в роли бесконечности
     private final int number;
 
-    private int distance;
+    private int distance; // расстояние до MST
 
-    private Vertex ancestor;
+    private Vertex ancestor; // предок
 
-    private final List<Edge> adjacentEdges = new ArrayList<>();
+    private final List<Edge> adjacentEdges = new ArrayList<>(); // список смежных рёбер
 
-    private final Map<Vertex, Edge> vertexEdgeMap = new HashMap<>();
+    private final Map<Vertex, Edge> vertexEdgeMap = new HashMap<>(); // хэш-таблица вершина-ребро смежных вершин и
+    // соответствующих им рёбер. Сделана для оптимизации работы, без неё приходится по циклу перебирать все смежные
+    // рёбра.
 
+    /**
+     * Кроме номера, в конструкторе вершины задаются расстояние до MST, как бесконечное
+     * и null в качестве предка, как это было бы перед началом алгоритма Прима.
+     * @param number задаётся в конструкторе графа.
+     */
     public Vertex(int number) {
         this.number = number;
         this.distance = INFINITY;
         this.ancestor = null;
     }
+
+    /**
+     * Добавляет ребро и пару вершина/ребро в список рёбер и хэш-таблицу соответственно.
+     */
 
     public void addEdge(Edge edge) {
         adjacentEdges.add(edge);
